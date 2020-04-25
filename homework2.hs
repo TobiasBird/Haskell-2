@@ -12,6 +12,9 @@ data Links = From (Int,Int) (Int,Int) Links | EmptyL
 halfAdder = A (B (1,Xor) (B (2,And) EmptyG)) (From (1,1) (2,1) (From (1,2) (2,2) EmptyL))
 
 --2.c--
+instance show Circuit where
+	show = ppCircuit
+
 ppCircuit :: Circuit -> String
 ppCircuit (A g l) = ppGates g ++ ppLinks l
 
