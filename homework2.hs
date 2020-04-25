@@ -1,23 +1,23 @@
 --Exercise 2--
 --2.a--
 data Circuit = A Gates Links
-data Gates = B (Int,GateFn) Gates | Empty
+data Gates = B (Int,GateFn) Gates | EmptyG
 data GateFn = And
 	     | Or
 	     | Xor
 	     | Not
-data Links = From (Int,Int) (Int,Int) Links | Empty
+data Links = From (Int,Int) (Int,Int) Links | EmptyL
 
 --2.b--
-halfAdder = A (B (1,Xor) (B (2,And)) Empty) (From (1,1) (2,1) (From (1,2) (2,2) Empty))
+--halfAdder = A (B (1,Xor) (B (2,And)) EmptyG) (From (1,1) (2,1) (From (1,2) (2,2) EmptyL))
 
 --2.c--
 ppCircuit :: Circuit -> String
-ppCircuit A G L = ppGates G ++ ppLinks L
+ppCircuit (A g l) = ppGates g ++ ppLinks l
 
 ppGates :: Gates -> String
-ppGates Empty = ""
-ppGates B (int1,str) next = int1 ++ ":" ++ ppGateFn str ++ ";" ++ ppGates next
+ppGates EmptyG = ""
+ppGates (B (int1,str) next) = show int1++":"++ppGateFn str++";"++ppGates next
 
 ppGateFn :: GateFn -> String
 ppGateFn And = "and"
@@ -26,5 +26,5 @@ ppGateFn Xor = "xor"
 ppGateFn Not = "not"  	
 
 ppLinks :: Links -> String
-ppLinks Empty = ""
-ppLinks From (int1,int2) (int3,int4) next = "from " ++ int1 ++ "." ++ int2 ++ " to " ++ int3 ++ "." ++ int4 ++ ";" ++ ppLinks next 	 
+ppLinks EmptyL = ""
+ppLinks (From (int1,int2) (int3,int4) next) = "from "++show int1++"."++show int2++" to "++show int3++"."++show int4++";"++ppLinks next 	 
