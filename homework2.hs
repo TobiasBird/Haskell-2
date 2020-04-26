@@ -1,3 +1,25 @@
+--Exercise 1--
+--1.a--
+
+data Cmd = pen Mode
+					| moveto (Pos, Pos)
+					| def String ( Pars ) Cmd
+					| call String ( Vals )
+					| Cmd Cmd
+
+data Mode = Up
+					| Down
+data Pos = Int
+					| String
+data Pars = String Pars
+					| String
+data Vals = Int Vals
+					| Int
+
+pen :: Mode -> Bool
+pen Mode 	| Mode == Up = False
+					| Mode == Down = True
+
 --Exercise 2--
 --2.a--
 data Circuit = A Gates Links
@@ -26,8 +48,8 @@ ppGateFn :: GateFn -> String
 ppGateFn And = "and"
 ppGateFn Or = "or"
 ppGateFn Xor = "xor"
-ppGateFn Not = "not"  	
+ppGateFn Not = "not"
 
 ppLinks :: Links -> String
 ppLinks EmptyL = ""
-ppLinks (From (int1,int2) (int3,int4) next) = "from "++show int1++"."++show int2++" to "++show int3++"."++show int4++";\n"++ppLinks next 	 
+ppLinks (From (int1,int2) (int3,int4) next) = "from "++show int1++"."++show int2++" to "++show int3++"."++show int4++";\n"++ppLinks next
