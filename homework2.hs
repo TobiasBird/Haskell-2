@@ -1,11 +1,21 @@
+import Data.List()
+
+--Exercise 1--
+--1.a--
+
+data Mode = Up | Down deriving(Show, Eq)
+data Pos = POS1 Int | POS2 String deriving(Show, Eq)
+data Pars = PARS1 String Pars | PARS2 String deriving(Show, Eq)
+data Vals = VALS1 Int Vals | VALS2 Int deriving(Show, Eq)
+
+data Cmd = Pen Mode | Moveto Pos Pos | Def String [Pars] Cmd | Call String [Vals] | Ccmd Cmd deriving(Show, Eq)
+
+
 --Exercise 2--
 --2.a--
 data Circuit = A Gates Links
 data Gates = B (Int,GateFn) Gates | EmptyG
-data GateFn = And
-	     | Or
-	     | Xor
-	     | Not
+data GateFn = And | Or | Xor | Not
 data Links = From (Int,Int) (Int,Int) Links | EmptyL
 
 --2.b--
