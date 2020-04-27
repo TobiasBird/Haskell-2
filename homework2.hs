@@ -7,7 +7,7 @@ data Pos = POS1 Int | POS2 String deriving(Show, Eq)
 data Pars = PARS1 String Pars | PARS2 String deriving(Show, Eq)
 data Vals = VALS1 Int Vals | VALS2 Int deriving(Show, Eq)
 
-data Cmd = Pen Mode | Moveto (Pos, Pos) | Def String Pars Cmd | CMD1 Cmd Cmd deriving(Show, Eq)
+data Cmd = Pen Mode | Moveto (Pos, Pos) | Def String Pars Cmd | Call String Vals | CMD1 Cmd Cmd deriving(Show, Eq)
 
 --1.b--
 vector = Def "vector" (PARS1 "x1" (PARS1 "y1" (PARS1 "x2" (PARS2 "y2")))) (CMD1 (CMD1 (Pen Up) (Moveto (POS2 "x1",POS2 "y1")) ) (CMD1 (Pen Down) (Moveto (POS2 "x2",POS2 "y2"))))
