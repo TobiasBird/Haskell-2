@@ -1,8 +1,7 @@
-import Data.List()
+
 
 --Exercise 1--
 --1.a--
-
 data Mode = Up | Down deriving(Show, Eq)
 data Pos = POS1 Int | POS2 String deriving(Show, Eq)
 data Pars = PARS1 String Pars | PARS2 String deriving(Show, Eq)
