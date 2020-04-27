@@ -1,4 +1,4 @@
-
+-- Group members: Harper Swenson, Tobias Bird, Victor Campa, Gregory Oertli--
 
 --Exercise 1--
 --1.a--
