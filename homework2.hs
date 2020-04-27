@@ -1,5 +1,3 @@
-import Data.List()
-
 --Exercise 1--
 --1.a--
 
@@ -8,8 +6,12 @@ data Pos = POS1 Int | POS2 String deriving(Show, Eq)
 data Pars = PARS1 String Pars | PARS2 String deriving(Show, Eq)
 data Vals = VALS1 Int Vals | VALS2 Int deriving(Show, Eq)
 
-data Cmd = Pen Mode | Moveto (Pos,Pos) | Def String Pars Cmd | Call String Vals | Ccmd Cmd deriving(Show, Eq)
+data Cmd = Pen Mode | Moveto (Pos,Pos) | Def String Pars Cmd | Call String Vals | Ccmd Cmd Cmd deriving(Show, Eq)
 
+-- --1.b--
+
+vector :: Cmd
+vector = Def "vector" (PARS1 "x1" (PARS1 "y1" (PARS1 "x2" (PARS2 "y2")))) (Ccmd (Ccmd (Pen Up) (Moveto (POS2 "x1",POS2 "y1")) ) (Ccmd (Pen Down) (Moveto (POS2 "x2",POS2 "y2"))))
 
 --Exercise 2--
 --2.a--
